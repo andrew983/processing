@@ -1,3 +1,9 @@
+import ddf.minim.*;          //at the very top of your sketch
+AudioSample dancemoves;          //at the top of your sketch
+boolean playSound = true; 
+
+
+
 PImage donke;
 PImage tael;
 int ex;
@@ -8,20 +14,15 @@ void setup(){
 
  size(800,600);
  donke.resize(800,600);
- 
+ Minim minim = new Minim(this);     //In the setup method
+dancemoves = minim.loadSample("fortnut.wav");     //In setup. Change the file name if you need to
+
  
 
 }
 void draw(){
+  
 
-  
-  
-  
-  
-  
-  
-  
-  
   background(donke);
 
 rect(0,0,30,30);
@@ -37,9 +38,14 @@ if(mousePressed){
 }
 image(tael,ex,why);
 
-//if(
+if(mousePressed&&dist(406,324,mouseX,mouseY) > 40){
 
-
+println("nice you did it!");
+if (playSound) {
+     dancemoves.trigger();
+     playSound = false;
+}
+}
 
 
 
